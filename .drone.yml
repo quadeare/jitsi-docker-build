@@ -16,9 +16,3 @@ steps:
       - apt-get -y update
       - VERSION=$(apt-cache show jitsi-meet | grep Version | head -1) && echo ${VERSION//Version:} > /root/version
       - cat version
-
-  - name: build  
-    image: plugins/docker
-    commands:
-      - cat /root/version
-      - docker ps -a
