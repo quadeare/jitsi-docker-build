@@ -1,0 +1,22 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+  - version
+  - build
+
+version:
+  image: ubuntu:18.04
+  script:
+    - ./get_version.sh
+  artifacts:
+      paths:
+        - jitsi/
+
+build :
+  image: docker:dind
+  script:
+    - cat /jitsi/version
+    - docker ps -a
