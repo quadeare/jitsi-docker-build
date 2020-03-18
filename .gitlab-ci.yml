@@ -18,5 +18,5 @@ version:
 build :
   image: docker:dind
   script:
-    - cat /jitsi/version
+    - cat jitsi/version
     - docker ps -a
