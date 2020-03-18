@@ -4,11 +4,11 @@ type: docker
 name: default
 
 steps:
-  - name: getversion
-    image: ubuntu
-    volumes:
-      - name: jitsi-version
-        path: /root/version
+  - name: get_version
+    image: ubuntu:18.04
+    #volumes:
+    #  - name: jitsi-version
+    #    path: /root/version
     commands:
        - echo "test"
       #- apt update && apt install sudo wget gnupg
