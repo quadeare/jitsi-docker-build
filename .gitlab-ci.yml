@@ -1,8 +1,5 @@
 image: docker:latest
 
-services:
-  - docker:dind
-
 stages:
   - prepare
   - build
@@ -19,6 +16,8 @@ version:
 build:
   stage: build
   image: docker:dind
+  services:
+    - docker:dind
   script:
     - cat jitsi/version
     - docker ps -a
