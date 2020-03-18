@@ -4,8 +4,8 @@ type: docker
 name: default
 
 steps:
-  - name: version
-    image: ubuntu:18.04
+  - name: version 
+    image: ubuntu
     #volumes:
     #  - name: jitsi-version
     #    path: /root/version
