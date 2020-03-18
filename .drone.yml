@@ -5,7 +5,11 @@ name: default
 
 steps:
   - name: version 
-    image: ubuntu
+    image: ubuntu:18.04
+    volumes:
+      - name: jitsi_version
+        path: /root/version
+    commands:
     commands:
       - echo "toto"
 
