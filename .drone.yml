@@ -13,18 +13,14 @@ steps:
       - ./get_version.sh
 
   - name: build 
-    image: docker:dind
+    image: plugins/docker
     volumes:
       - name: jitsi
         path: /jitsi/
-      - name: dockersock
-        path: /var/run
     commands:
       - cat /jitsi/version
       - docker ps -a
 
 volumes:
 - name: jitsi
-  temp: {}
-- name: dockersock
   temp: {}
