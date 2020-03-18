@@ -4,10 +4,11 @@ services:
   - docker:dind
 
 stages:
-  - version
+  - prepare
   - build
 
 version:
+  stage: prepare
   image: ubuntu:18.04
   script:
     - ./get_version.sh
@@ -15,7 +16,8 @@ version:
       paths:
         - jitsi/
 
-build :
+build:
+  stage: build
   image: docker:dind
   script:
     - cat jitsi/version
