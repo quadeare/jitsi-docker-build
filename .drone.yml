@@ -10,7 +10,6 @@ steps:
       - name: jitsi_version
         path: /root/version
     commands:
-    commands:
       - echo "toto"
 
   - name: build 
