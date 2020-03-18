@@ -13,6 +13,16 @@ version:
       paths:
         - jitsi/
 
+checkout:
+  stage: prepare
+  image: git
+  script:
+    - mkdir jitsi && cd jitsi
+    - git clone git@github.com:jitsi/docker-jitsi-meet.git
+  artifacts:
+      paths:
+        - jitsi/
+
 build:
   stage: build
   image: docker:dind
@@ -21,3 +31,5 @@ build:
   script:
     - cat jitsi/version
     - docker ps -a
+    - ls jitsi
+    - ls jitsi/docker-jitsi-meet
