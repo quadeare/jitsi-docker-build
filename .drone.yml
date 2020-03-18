@@ -7,7 +7,7 @@ steps:
   - name: version 
     image: ubuntu:18.04
     volumes:
-      - name: jitsi_version
+      - name: jitsi
         path: /jitsi/
     commands:
       - ./get_version.sh
@@ -15,8 +15,12 @@ steps:
   - name: build 
     image: plugins/docker
     volumes:
-      - name: jitsi_version
+      - name: jitsi
         path: /jitsi/
     commands:
       - cat /jitsi/version
       - docker ps -a
+
+volumes:
+- name: jitsi
+  temp: {}
