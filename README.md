@@ -27,4 +27,4 @@ Official documentation : https://github.com/jitsi/docker-jitsi-meet
 
 ### Kubernetes (Helm)
 
-Non official repository : https://github.com/quadeare/helm-jitsi
+Non official repository (WIP) : https://github.com/quadeare/helm-jitsi
