@@ -1,0 +1,77 @@
+image: docker:latest
+
+stages:
+  - prepare
+  - build
+
+get_versions_unstable:
+  stage: prepare
+  image: ubuntu:18.04
+  script:
+    - ./get_versions.sh unstable
+  artifacts:
+      paths:
+        - jitsi/
+
+get_versions_testing:
+  stage: prepare
+  image: ubuntu:18.04
+  script:
+    - ./get_versions.sh testing
+  artifacts:
+      paths:
+        - jitsi/
+
+
+get_versions_stable:
+  stage: prepare
+  image: ubuntu:18.04
+  script:
+    - ./get_versions.sh stable
+  artifacts:
+      paths:
+        - jitsi/
+
+checkout:
+  stage: prepare
+  image: alpine
+  script:
+    - apk add git
+    - mkdir jitsi && cd jitsi
+    - git clone https://github.com/jitsi/docker-jitsi-meet.git
+  artifacts:
+      paths:
+        - jitsi/
+
+build_unstable:
+  stage: build
+  image: docker:dind
+  services:
+    - docker:dind
+  before_script:
+    - apk add bash make
+    - docker login -u $CI_REGISTRY_USER -p "$CI_REGISTRY_PASSWORD"
+  script:
+    - ./build.sh unstable
+
+build_testing:
+  stage: build
+  image: docker:dind
+  services:
+    - docker:dind
+  before_script:
+    - apk add bash make
+    - docker login -u $CI_REGISTRY_USER -p "$CI_REGISTRY_PASSWORD"
+  script:
+    - ./build.sh testing
+
+build_stable:
+  stage: build
+  image: docker:dind
+  services:
+    - docker:dind
+  before_script:
+    - apk add bash make
+    - docker login -u $CI_REGISTRY_USER -p "$CI_REGISTRY_PASSWORD"
+  script:
+    - ./build.sh stable
