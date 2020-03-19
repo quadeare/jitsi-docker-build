@@ -15,6 +15,6 @@ do
     PACKAGE=${JITSI_PACKAGES[i]}
     VERSION=$(apt-cache show $PACKAGE | grep Version | head -1) && echo ${VERSION//Version:} > jitsi/version_${SERVICE}_$1
 
-    echo "$PACKAGE is under version : " ${VERSION//Version:}
+    echo "$PACKAGE is under version : "${VERSION//Version:}
 done
 
