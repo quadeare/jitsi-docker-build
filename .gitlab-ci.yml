@@ -4,30 +4,30 @@ stages:
   - prepare
   - build
 
-get_version_unstable:
+get_versions_unstable:
   stage: prepare
   image: ubuntu:18.04
   script:
-    - ./get_version.sh unstable
+    - ./get_versions.sh unstable
   artifacts:
       paths:
         - jitsi/
 
-get_version_testing:
+get_versions_testing:
   stage: prepare
   image: ubuntu:18.04
   script:
-    - ./get_version.sh testing
+    - ./get_versions.sh testing
   artifacts:
       paths:
         - jitsi/
 
 
-get_version_stable:
+get_versions_stable:
   stage: prepare
   image: ubuntu:18.04
   script:
-    - ./get_version.sh stable
+    - ./get_versions.sh stable
   artifacts:
       paths:
         - jitsi/
