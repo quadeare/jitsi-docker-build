@@ -6,12 +6,16 @@ sudo sh -c "echo 'deb https://download.jitsi.org $1/' > /etc/apt/sources.list.d/
 apt-get -y update
 mkdir jitsi
 
-JITSI_SERVICES=(jitsi-meet-web jitsi-meet-prosody jitsi-meet-jvb jicofo)
+JITSI_PACKAGES=(jitsi-meet-web jitsi-meet-prosody jitsi-videobridge jicofo)
+JITSI_SERVICES=(web prosody jicofo jvb)
 
-for service in "${JITSI_SERVICES[@]}"
+for package in "${JITSI_PACKAGES[@]}"
 do
-    VERSION=$(apt-cache show $service | grep Version | head -1) && echo ${VERSION//Version:} > jitsi/version_${service//jitsi-meet-}_$1
+    for service in "${JITSI_SERVICES[@]}"
+    do
+        VERSION=$(apt-cache show $package | grep Version | head -1) && echo ${VERSION//Version:} > jitsi/version_${service}_$1
 
-    echo "$service is under version : " ${VERSION//Version:}
+        echo "$package is under version : " ${VERSION//Version:}
+    done
 done
 
