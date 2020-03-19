@@ -4,7 +4,7 @@
 
 This repository daily build Jitsi releases (unstable, testing, stable) with Docker tags.
 
-Public Jitsi instance (stable images) : https://jitsi.cheezecake.ovh
+Public Jitsi instance (stable images) : https://jitsi.q2r.net
 
 ## CI/CD status
 [![pipeline status](https://gitlab.com/quadeare/jitsi-docker-build/badges/master/pipeline.svg)](https://gitlab.com/quadeare/jitsi-docker-build/-/commits/master)
