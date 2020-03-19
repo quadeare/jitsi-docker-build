@@ -9,13 +9,12 @@ mkdir jitsi
 JITSI_PACKAGES=(jitsi-meet-web jitsi-meet-prosody jitsi-videobridge jicofo)
 JITSI_SERVICES=(web prosody jicofo jvb)
 
-for package in "${JITSI_PACKAGES[@]}"
+for i in "${!JITSI_PACKAGES[@]}"
 do
-    for service in "${JITSI_SERVICES[@]}"
-    do
-        VERSION=$(apt-cache show $package | grep Version | head -1) && echo ${VERSION//Version:} > jitsi/version_${service}_$1
+    SERVICE=${JITSI_SERVICES[i]}
+    PACKAGE=${JITSI_PACKAGES[i]}
+    VERSION=$(apt-cache show $PACKAGE | grep Version | head -1) && echo ${VERSION//Version:} > jitsi/version_${SERVICE}_$1
 
-        echo "$package is under version : " ${VERSION//Version:}
-    done
+    echo "$PACKAGE is under version : " ${VERSION//Version:}
 done
 
